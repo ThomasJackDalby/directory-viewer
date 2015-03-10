@@ -1,0 +1,19 @@
+﻿<Window x:Class="Directory_Viewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TreeView DataContext="{Binding RootDirectory.SubItems}"/>
+
+        <Canvas Name="Diagram"/>
+    </Grid>
+    
+    
+
+</Window>
