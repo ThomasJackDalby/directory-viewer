@@ -26,5 +26,10 @@ namespace Directory_Viewer
             InitializeComponent();
             DataContext = new MainWindowVM(this);
         }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            MainWindowVM.Instance.SelectedItem = (DVIOItemVM)((TreeView)sender).SelectedItem;
+        }
     }
 }

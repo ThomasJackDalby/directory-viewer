@@ -51,6 +51,7 @@ namespace Directory_Viewer.VM
             rectangle.StrokeThickness = 2;
             rectangle.SetValue(Canvas.TopProperty, top);
             rectangle.SetValue(Canvas.LeftProperty, left);
+            rectangle.MouseDown += Select;
             Shape = rectangle;
         }
         #endregion

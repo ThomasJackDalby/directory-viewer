@@ -39,8 +39,6 @@ namespace Directory_Viewer.Model
             return Size * 1e-6;
         }
 
-
-
         public abstract void SetHeight(double value);
 
         public abstract void SetWidth(double value);

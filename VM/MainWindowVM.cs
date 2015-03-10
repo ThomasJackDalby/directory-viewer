@@ -13,9 +13,23 @@ namespace Directory_Viewer.VM
     {
         #region Properties
         public MainWindow MainWindow { get; set; }
+        public static MainWindowVM Instance { get; set; }
+
 
         public double XScale { get; set; }
         public double YScale { get; set; }
+
+        private DVIOItemVM selectedItem;
+        public DVIOItemVM SelectedItem 
+        {
+            get { return selectedItem; }
+            set
+            {
+                if (SelectedItem != null) SelectedItem.DeSelect();
+                selectedItem = value;
+                if (SelectedItem != null) SelectedItem.Select();
+            }
+        }
 
         public DVDirectoryVM RootDirectory { get; set; }
         #endregion
@@ -24,6 +38,7 @@ namespace Directory_Viewer.VM
         public MainWindowVM(MainWindow mainWindow)
         {
             MainWindow = mainWindow;
+            Instance = this;
             RootDirectory = new DVDirectoryVM(new DVDirectory(@"D:\Git"));
             MainWindow.SizeChanged += SetScales;
             SetScales(null, null);

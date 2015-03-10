@@ -11,7 +11,7 @@
             <ColumnDefinition Width="*" Name="DiagramCol"/>
         </Grid.ColumnDefinitions>
 
-        <TreeView DataContext="{Binding RootDirectory}" ItemsSource="{Binding SubItems}" Grid.Column="0">
+        <TreeView DataContext="{Binding RootDirectory}" ItemsSource="{Binding SubItems}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.Resources>               
                 <HierarchicalDataTemplate DataType="{x:Type vm:DVDirectoryVM}" ItemsSource="{Binding SubItems}">
                     <Grid>
