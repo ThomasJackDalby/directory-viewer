@@ -9,6 +9,8 @@ namespace Directory_Viewer.Model
 {
     public class DVFile : DVIOItem
     {
+        public string Name { get; set; }
+
         #region Constructors
         public DVFile(string path)
             :base()
@@ -16,6 +18,7 @@ namespace Directory_Viewer.Model
             Path = path;
             FileInfo fileInfo = new FileInfo(Path);
             Size = fileInfo.Length;
+            Name = fileInfo.Name;
         }
         public override void SetHeight(double value)
         {

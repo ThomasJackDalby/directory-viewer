@@ -9,11 +9,17 @@ namespace Directory_Viewer.Model
 {
     public class DVDirectory : DVIOItem
     {
+        public string Name { get; set; }
+
         #region Constructors
         public DVDirectory(string path)
             :base()
         {
-            Path = path;           
+            Path = path;
+
+            DirectoryInfo directoryInfo = new DirectoryInfo(Path);
+            Name = directoryInfo.Name;
+
             foreach (string file in Directory.EnumerateFiles(Path)) try { SubItems.Add(new DVFile(file)); } catch (Exception) { Console.WriteLine(String.Format("Unable to add {0}", file)); }
             foreach (string directory in Directory.EnumerateDirectories(Path)) try { SubItems.Add(new DVDirectory(directory)); }
                 catch (Exception) { Console.WriteLine(String.Format("Unable to add {0}", directory)); }

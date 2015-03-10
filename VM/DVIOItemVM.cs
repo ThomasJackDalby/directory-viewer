@@ -17,6 +17,12 @@ namespace Directory_Viewer.VM
 
         public ObservableCollection<DVIOItemVM> SubItems { get; set; }
 
+        public double Size
+        {
+            get { return Model.Size; }
+            set { Model.Size = value; }
+        }
+
         public double Height
         {
             get { return Model.Height; }
@@ -44,5 +50,6 @@ namespace Directory_Viewer.VM
         }
 
         public abstract void SetShape(double top, double left, double xScale, double yScale);
+
     }
 }

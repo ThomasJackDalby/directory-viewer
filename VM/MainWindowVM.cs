@@ -24,10 +24,10 @@ namespace Directory_Viewer.VM
         public MainWindowVM(MainWindow mainWindow)
         {
             MainWindow = mainWindow;
-            RootDirectory = new DVDirectoryVM(new DVDirectory(@"D:\"));
-            RootDirectory.Model.SetAbstract(MainWindow.Width / MainWindow.Height);
+            RootDirectory = new DVDirectoryVM(new DVDirectory(@"D:\Git"));
             MainWindow.SizeChanged += SetScales;
             SetScales(null, null);
+            OnPropertyChanged("RootDirectory");
         }
         #endregion
 
@@ -41,9 +41,13 @@ namespace Directory_Viewer.VM
         public void SetScales(object obj, SizeChangedEventArgs e)
         {
             MainWindow.Diagram.Children.Clear();
-            RootDirectory.Model.SetAbstract(MainWindow.Width / MainWindow.Height);
-            XScale = MainWindow.ActualWidth / RootDirectory.Width;
-            YScale = MainWindow.ActualHeight / RootDirectory.Height;
+
+            MainWindow.Diagram.Width = MainWindow.Width - MainWindow.TreeCol.Width.Value;
+            MainWindow.Diagram.Height = MainWindow.Height;
+
+            RootDirectory.Model.SetAbstract(MainWindow.Diagram.Width / MainWindow.Diagram.Height);
+            XScale = MainWindow.Diagram.Width / RootDirectory.Width;
+            YScale = MainWindow.Diagram.Height / RootDirectory.Height;
             RootDirectory.SetShape(0, 0, XScale, YScale);
             AddDirectoryToCanvas(RootDirectory);
             OnPropertyChanged("RootDirectory");

@@ -26,6 +26,21 @@ namespace Directory_Viewer.Model
         }
         #endregion
 
+        public double GetSizeInBytes()
+        {
+            return Size;
+        }
+        public double GetSizeInKiloBytes()
+        {
+            return Size * 1e-3;
+        }
+        public double GetSizeInMegaBytes()
+        {
+            return Size * 1e-6;
+        }
+
+
+
         public abstract void SetHeight(double value);
 
         public abstract void SetWidth(double value);

@@ -13,6 +13,18 @@ namespace Directory_Viewer.VM
 {
     public class DVDirectoryVM : DVIOItemVM
     {
+        public DVDirectory CastModel 
+        {
+            get { return (DVDirectory)Model; }
+            set { Model = value; }
+        }
+
+        public string Name
+        {
+            get { return CastModel.Name; }
+            set { CastModel.Name = value; }
+        }
+
         #region Constructors
         public DVDirectoryVM(DVDirectory model)
             : base(model)

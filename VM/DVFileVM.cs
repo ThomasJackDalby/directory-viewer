@@ -12,6 +12,18 @@ namespace Directory_Viewer.VM
 {
     public class DVFileVM : DVIOItemVM
     {
+        public DVFile CastModel 
+        {
+            get { return (DVFile)Model; }
+            set { Model = value; }
+        }
+
+        public string Name
+        {
+            get { return CastModel.Name; }
+            set { CastModel.Name = value; }
+        }
+
         #region Constructors
         public DVFileVM(DVFile model)
             : base(model)
@@ -24,9 +36,10 @@ namespace Directory_Viewer.VM
             Rectangle rectangle = new Rectangle();
             rectangle.Height = Model.Height * xScale;
             rectangle.Width = Model.Width * yScale;
-
             rectangle.SetValue(Canvas.TopProperty, top);
             rectangle.SetValue(Canvas.LeftProperty, left);
+            rectangle.ToolTip = new ToolTip() { Content = String.Format("{0}\n{1:n2}mb\n{2:n2}kb\n{3:n}b", CastModel.Name, Model.GetSizeInMegaBytes(), Model.GetSizeInKiloBytes(), Model.GetSizeInBytes()) };
+
             Shape = rectangle;
 
             if (Model.Path.Contains(".jpg"))
@@ -45,9 +58,6 @@ namespace Directory_Viewer.VM
                 rectangle.Fill = Brushes.LightBlue;
             }
         }
-
-
-
         #endregion
     }
 }
