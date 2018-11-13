@@ -39,7 +39,7 @@ namespace Directory_Viewer.VM
         {
             MainWindow = mainWindow;
             Instance = this;
-            RootDirectory = new DVDirectoryVM(new DVDirectory(@"D:\Git"));
+            RootDirectory = new DVDirectoryVM(new DVDirectory(@"D:\Users\Tom\Documents"));
             MainWindow.SizeChanged += SetScales;
             SetScales(null, null);
             OnPropertyChanged("RootDirectory");
@@ -67,8 +67,6 @@ namespace Directory_Viewer.VM
             AddDirectoryToCanvas(RootDirectory);
             OnPropertyChanged("RootDirectory");
         }
-
-
         #endregion
     }
 }
